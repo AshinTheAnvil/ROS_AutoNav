@@ -1,0 +1,144 @@
+<?xml version='1.0'?>
+
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="robot_footprint"></link>
+
+  <joint name="robot_footprint_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="chassis" />
+  </joint>
+
+  <link name="chassis">
+    <pose>0 0 0.1 0 0 0</pose>
+
+    <inertial>
+      <mass value="15.0"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.15" ixy="0" ixz="0"
+          iyy="0.15" iyz="0"
+          izz="0.2"
+      />
+    </inertial>
+
+    <collision name="collision">
+      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </collision>
+
+    <visual name="chassis_visual">
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- Front Caster -->
+  <link name="front_caster">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="0.01" ixy="0" ixz="0"
+          iyy="0.01" iyz="0"
+          izz="0.01"
+      />
+    </inertial>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="front_caster_joint" type="fixed">
+    <origin xyz="0.15 0 -0.05" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="front_caster"/>
+  </joint>
+
+  <!-- Left Wheel -->
+  <link name="left_wheel">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="0.02" ixy="0" ixz="0"
+          iyy="0.02" iyz="0"
+          izz="0.03"
+      />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.02"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.02"/>
+      </geometry>
+    </visual>
+  </link>
+
+ 
+  <joint type="continuous" name="left_wheel_joint">
+    <origin xyz="-0.1 -0.2 0" rpy="0 0 0"/> <!-- Pinned to chassis edge -->
+    <child link="left_wheel"/>
+    <parent link="chassis"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <dynamics damping="1.0" friction="1.0"/>
+  </joint>
+
+  <!-- Right Wheel -->
+  <link name="right_wheel">
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="0.02" ixy="0" ixz="0"
+          iyy="0.02" iyz="0"
+          izz="0.03"
+      />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.02"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.02"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1"/>
+      </material>
+    </visual>
+  </link>
+
+ 
+  <joint type="continuous" name="right_wheel_joint">
+    <origin xyz="-0.1 0.2 0" rpy="0 0 0"/> <!-- Pinned to chassis edge -->
+    <child link="right_wheel"/>
+    <parent link="chassis"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <dynamics damping="1.0" friction="1.0"/>
+  </joint>
+
+</robot>
+
