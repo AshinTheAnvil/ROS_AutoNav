@@ -35,6 +35,9 @@
       <geometry>
         <cylinder radius="0.2" length="0.1"/>
       </geometry>
+      <material name="chassis_color">
+        <color rgba="0.5 0.5 0.5 1.0"/> <!-- Gray color -->
+      </material>
     </visual>
   </link>
 
@@ -58,6 +61,9 @@
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
+      <material name="caster_color">
+        <color rgba="0.8 0.2 0.2 1.0"/> <!-- Red color -->
+      </material>
     </visual>
   </link>
 
@@ -66,6 +72,79 @@
     <parent link="chassis"/>
     <child link="front_caster"/>
   </joint>
+
+   <!-- Camera Link -->
+  <link name="camera">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="1e-6" ixy="0" ixz="0"
+          iyy="1e-6" iyz="0"
+          izz="1e-6"
+      />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="camera_color">
+        <color rgba="0.2 0.8 0.2 1.0"/> <!-- Green color -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- Camera Joint -->
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="camera"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+   <!-- Hokuyo Link -->
+  <link name="hokuyo">
+    <inertial>
+      <mass value="1e-5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="1e-6" ixy="0" ixz="0"
+          iyy="1e-6" iyz="0"
+          izz="1e-6"
+      />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://my_robot/meshes/hokuyo.dae"/>
+      </geometry>
+      <material name="hokuyo_color">
+        <color rgba="0.2 0.2 0.2 1.0"/> <!-- Dark Gray -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- Hokuyo Joint -->
+  <joint name="hokuyo_joint" type="fixed">
+    <origin xyz="0.15 0 0.085" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="hokuyo"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
 
   <!-- Left Wheel -->
   <link name="left_wheel">
@@ -89,6 +168,9 @@
       <geometry>
         <cylinder radius="0.08" length="0.02"/>
       </geometry>
+      <material name="wheel_color">
+        <color rgba="0.2 0.2 0.8 1.0"/> <!-- Blue color -->
+      </material>
     </visual>
   </link>
 
@@ -124,9 +206,6 @@
       <geometry>
         <cylinder radius="0.08" length="0.02"/>
       </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1"/>
-      </material>
     </visual>
   </link>
 
@@ -140,5 +219,36 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
+
+  <gazebo reference="chassis">
+
+	<material>Gazebo/Blue</material>
+
+  </gazebo>
+
+  <gazebo reference="camera">
+
+	<material>Gazebo/Red</material>
+
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+
+	<material>Gazebo/Green</material>
+
+   </gazebo>
+
+   <gazebo reference="right_wheel">
+
+	<material>Gazebo/Green</material>
+
+   </gazebo>
+  
+
+   <gazebo reference="front_caster">
+
+	<material>Gazebo/Yellow</material>
+
+   </gazebo>
 </robot>
 
