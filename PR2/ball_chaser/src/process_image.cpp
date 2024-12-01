@@ -20,6 +20,10 @@ void drive_robot(float lin_x, float ang_z)
     srv.request.linear_x = lin_x;
     srv.request.angular_z= ang_z;
 
+    if (!client.call(srv)) {
+        ROS_ERROR("Failed to call service /ball_chaser/command_robot");
+    }
+
 }
 
 // This callback function continuously executes and reads the image data
@@ -45,6 +49,7 @@ void process_image_callback(const sensor_msgs::Image img)
 
 	{
             white_pixel_found = true;
+	    ROS_INFO_STREAM("whiteeeeeeee");
 
 	    // Calculate the column index of the pixel
 	   
@@ -71,9 +76,10 @@ void process_image_callback(const sensor_msgs::Image img)
 
             break;
         }
-	drive_robot(v_x, om_z);
+	
 
        }
+   
    // Stop the robot if no white pixel is found
     if (white_pixel_found==false)
     {
@@ -81,7 +87,7 @@ void process_image_callback(const sensor_msgs::Image img)
         om_z = 0.0;
     }
 
- 
+ drive_robot(v_x, om_z);
     
 }
 
