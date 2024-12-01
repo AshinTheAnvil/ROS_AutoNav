@@ -53,24 +53,24 @@ void process_image_callback(const sensor_msgs::Image img)
 
 	    // Calculate the column index of the pixel
 	   
-            int column_located = (i % img.step) / 3; // 3 is used for division as RGB has 3 channels
+            int column_located = i % img.step; // this is how a column is identifies as mod gives a remainder whcih indicates a column, compared to division which gives row number
 
 	    if (column_located < img.step / 3) 
 	    {
             // To Left
             v_x = 0.0;
-            om_z = 0.3;
+            om_z = 0.1;
 	    }
-	    else if (column_located > img.step * 2 / 3)
+	    else if (column_located > (img.step * 2) / 3)
 	    {
             // To Right
             v_x = 0.0;
-            om_z = -0.3;
+            om_z = -0.1;
 	    }
 	    else 
 	    {
             // drive straight
-            v_x = 0.3;
+            v_x = 0.5;
     	    om_z = 0.0;
 	    }
 
