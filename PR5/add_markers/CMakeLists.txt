@@ -204,6 +204,6 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(add_markers src/add_markers.cpp)
-target_link_libraries(add_markers ${catkin_LIBRARIES})
-add_dependencies(add_markers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(add_markers_odom src/add_markers_odom.cpp)
+target_link_libraries(add_markers_odom ${catkin_LIBRARIES})
+add_dependencies(add_markers_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
