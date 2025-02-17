@@ -3,8 +3,8 @@
 #include "nav_msgs/Odometry.h"
 #include <cmath>
 
-double pick_up_pos[2]  = {0.0, 3.0};
-double drop_off_position[2] = {7.0, 4.0};
+double pick_up_pos[2]  = {3.0, 2.0};
+double drop_off_position[2] = {6.0, 2.0};
 double pose[2] = {0, 0};  // current pose
 
 
@@ -68,7 +68,7 @@ int main( int argc, char** argv )
     marker.scale.y = 0.2;
     marker.scale.z = 0.2;
 
-    marker.color.r = 0.0f;
+    marker.color.r = 1.0f;
     marker.color.g = 1.0f;
     marker.color.b = 0.0f;
     marker.color.a = 1.0;
