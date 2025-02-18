@@ -3,22 +3,45 @@
 ## Project Overview
 This capstone project is part of Udacity's Robotics Software Engineer Nanodegree. The goal is to develop a home service robot capable of navigating an indoor environment, driving to a pick up location, and delivering them to a specified location using **ROS (Robot Operating System)**.
 
-## Localization, Navigation, and Mapping
-- **Localization**: The robot determines its position in the environment using **Adaptive Monte Carlo Localization (AMCL)**. This approach helps the robot estimate its position by comparing sensor data with a pre-built map.
-- **Mapping**: The **Simultaneous Localization and Mapping (SLAM)** algorithm is used to create a map of the environment. The robot builds the map dynamically while exploring an unknown space.
-- **Navigation**: The **move_base** package is used to plan and execute paths to a target location while avoiding obstacles. It utilizes **global and local costmaps** to ensure safe movement.
+## Project Overview
+This project utilizes several ROS packages to enable Simultaneous Localization and Mapping (SLAM), autonomous navigation, and marker management for a TurtleBot robot. The system integrates various ROS functionalities to map an environment, localize the robot within it, and navigate efficiently based on user-defined goals.
+- The robot autonomously moves to a pickup zone, simulates object pickup, and then navigates to the delivery zone.
+
+## Packages Used
+The project relies on the following ROS packages:
+
+- **[slam_gmapping](w) (ros-perception/slam_gmapping)**: Implements laser-based SLAM to create a 2D occupancy grid map using laser scan data and TurtleBot pose information as the robot moves through an environment.
+- **[turtlebot](w) Package**: Provides essential functionalities for controlling the TurtleBot robot.
+- **[keyboard_teleop](w)**: Enables manual control of the TurtleBot using keyboard inputs.
+- **[AMCL](w) (Adaptive Monte Carlo Localization)**: Utilizes a particle filter to localize the robot within a pre-generated map.
+- **[navigation](w) Package**: Uses odometry data (from AMCL) and other sensor inputs to autonomously navigate the robot to a specified goal.
+- **[my_robot](w)**: contains the custom world file.
+- **[map](w)**: contains the map of the custom world, crucial for localisation.
+
+
+## Custom Implementations
+To streamline the management of markers in the environment, a custom **add_markers** node was developed. This node:
+
+- Subscribes to requests to show or hide a marker at a given location using a custom ROS message.
+
+
+
 
 ## Project Structure
 ```
 HomeServiceRobot/
 │-- src/
-│   ├── pick_objects/
-│   ├── add_markers/
-│   ├── scripts/
-│   ├── turtlebot/
-│   ├── turtlebot_interactions/
-│   ├── turtlebot_simulator/
-│   ├── SLAM_gmapping/
+│   ├── pick_objects/             # pick_objects node
+│   ├── add_markers/              # add_marker node
+│   ├── scripts/                  # shell scripts
+│   ├── turtlebot/                # turtlebot_world.launch 
+│   ├── turtlebot_interactions/   # view_navigation.launch 
+│   ├── turtlebot_simulator/      # turtlebot_world.launch 
+│   ├── SLAM_gmapping/            # gmapping_demo.launch
+│   ├── map/                      # map yaml and png of custom world 
+│   ├── my_robot/                 # world files and robot urdf
+│   ├── capstone/                 # contains custom launch files for gazebo world and amcl_demo
+
 │-- CMakeLists.txt
 
 ```
@@ -40,12 +63,6 @@ HomeServiceRobot/
    ```sh
    ./home_service.sh
    ```
-
-   
-
-## Usage
-- The robot autonomously moves to a pickup zone, simulates object pickup, and then navigates to the delivery zone.
-- The environment includes obstacles to test path planning and obstacle avoidance.
 
 
 
