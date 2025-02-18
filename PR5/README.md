@@ -10,13 +10,12 @@ This project utilizes several ROS packages to enable Simultaneous Localization a
 ## Packages Used
 The project relies on the following ROS packages:
 
-- **[slam_gmapping](w) (ros-perception/slam_gmapping)**: Implements laser-based SLAM to create a 2D occupancy grid map using laser scan data and TurtleBot pose information as the robot moves through an environment.
-- **[turtlebot](w) Package**: Provides essential functionalities for controlling the TurtleBot robot.
-- **[keyboard_teleop](w)**: Enables manual control of the TurtleBot using keyboard inputs.
-- **[AMCL](w) (Adaptive Monte Carlo Localization)**: Utilizes a particle filter to localize the robot within a pre-generated map.
-- **[navigation](w) Package**: Uses odometry data (from AMCL) and other sensor inputs to autonomously navigate the robot to a specified goal.
-- **[my_robot](w)**: contains the custom world file.
-- **[map](w)**: contains the map of the custom world, crucial for localisation.
+- **[slam_gmapping]**: Implements laser-based SLAM to create a 2D occupancy grid map using laser scan data and TurtleBot pose information as the robot moves through an environment.
+- **[turtlebot] Package**: Provides essential functionalities for controlling the TurtleBot robot.
+- **[AMCL](Adaptive Monte Carlo Localization)**: Utilizes a particle filter to localize the robot within a pre-generated map.
+- **[navigation]Package**: Uses odometry data (from AMCL) and other sensor inputs to autonomously navigate the robot to a specified goal.
+- **[my_robot]**: contains the custom world file.
+- **[map]**: contains the map of the custom world, crucial for localisation.
 
 
 ## Custom Implementations
