@@ -6,6 +6,14 @@ This capstone project is part of Udacity's Robotics Software Engineer Nanodegree
 ## Project Overview
 This project utilizes several ROS packages to enable Simultaneous Localization and Mapping (SLAM), autonomous navigation, and marker management for a TurtleBot robot. The system integrates various ROS functionalities to map an environment, localize the robot within it, and navigate efficiently based on user-defined goals.
 - The robot autonomously moves to a pickup zone, simulates object pickup, and then navigates to the delivery zone.
+The project consists of the following tasks:  
+
+1. Design an indoor environment using the Building Editor in Gazebo.  
+2. Generate a 2D occupancy grid map by teleoperating the robot and performing SLAM with the gmapping package, utilizing odometry and laser scan data.  
+3. Implement Adaptive Monte Carlo Localization (AMCL) with the amcl package to localize the robot within the environment using odometry and laser scan data.  
+4. Test the navigation stack by setting a goal for the robot via the 2D Nav Goal button in Rviz.  
+5. Develop a `pick_objects` node to command the robot to navigate between designated pick-up and drop-off zones.  
+6. Create an `add_markers` node that subscribes to the robot's odometry and publishes markers in Rviz to simulate object pick-up and drop-off.
 
 ## Packages Used
 The project relies on the following ROS packages:
