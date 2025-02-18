@@ -4,7 +4,7 @@
 #include <cmath>
 
 double pick_up_pos[2]  = {3.0, 2.0};
-double drop_off_position[2] = {6.0, 2.0};
+double drop_off_position[2] = {4.0, 2.0};
 double pose[2] = {0, 0};  // current pose
 
 

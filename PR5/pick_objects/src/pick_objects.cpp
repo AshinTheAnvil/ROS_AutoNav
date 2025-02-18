@@ -48,7 +48,7 @@ int main(int argc, char** argv){
   ros::Duration(5.0).sleep();
   ROS_INFO("end of the first goal");
 
-  goal.target_pose.pose.position.x = 6.0;
+  goal.target_pose.pose.position.x = 4.0;
   goal.target_pose.pose.position.y = 2.0;
   goal.target_pose.pose.orientation.w = 1.0;
  // Send the goal position two and orientation for the robot to reach

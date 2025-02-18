@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 
     // Set the pose of the marker. This is a full 6DOF pose relative to the frame/time specified in the header
     marker.pose.position.x = 3;
-    marker.pose.position.y = 2.5;
+    marker.pose.position.y = 2;
     marker.pose.position.z = 0;
     marker.pose.orientation.x = 0.0;
     marker.pose.orientation.y = 0.0;
@@ -95,8 +95,8 @@ int main(int argc, char** argv)
     marker2.action = visualization_msgs::Marker::ADD;
 
     // Set the pose of the marker. This is a full 6DOF pose relative to the frame/time specified in the header
-    marker2.pose.position.x = -2;
-    marker2.pose.position.y = 2.5;
+    marker2.pose.position.x = 4;
+    marker2.pose.position.y = 2;
     marker2.pose.position.z = 0;
     marker2.pose.orientation.x = 0.0;
     marker2.pose.orientation.y = 0.0;
