@@ -1,8 +1,8 @@
 #!/bin/sh
-xterm -e " roslaunch /home/robond/catkin_wstest/src/capstone/homeservice_world.launch " &
+xterm -e " roslaunch turtlebot_gazebo homeservice_world.launch " &
 sleep 5
 
-xterm -e " roslaunch /home/robond/catkin_wstest/src/capstone/amcl_demo_homeservice.launch " &
+xterm -e " roslaunch turtlebot_gazebo amcl_demo_homeservice.launch " &
 sleep 5
 
 xterm -e " roslaunch turtlebot_rviz_launchers view_navigation.launch " &

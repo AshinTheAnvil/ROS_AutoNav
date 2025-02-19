@@ -47,7 +47,6 @@ HomeServiceRobot/
 │   ├── SLAM_gmapping/            # gmapping_demo.launch
 │   ├── map/                      # map yaml and png of custom world 
 │   ├── my_robot/                 # world files and robot urdf
-│   ├── capstone/                 # contains custom launch files for gazebo world and amcl_demo
 
 │-- CMakeLists.txt
 
