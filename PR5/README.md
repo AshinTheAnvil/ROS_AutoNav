@@ -1,7 +1,7 @@
 # Home Service Robot
 
 ## Project Overview
-This capstone project is part of Udacity's Robotics Software Engineer Nanodegree. The goal is to develop a home service robot capable of navigating an indoor environment, driving to a pick up location, and delivering them to a specified location using **ROS (Robot Operating System)**.
+The goal is to develop a home service robot capable of navigating an indoor environment, driving to a pick up location, and delivering them to a specified location using **ROS (Robot Operating System)**.
 
 ## Project Overview
 This project utilizes several ROS packages to enable Simultaneous Localization and Mapping (SLAM), autonomous navigation, and marker management for a TurtleBot robot. The system integrates various ROS functionalities to map an environment, localize the robot within it, and navigate efficiently based on user-defined goals.
